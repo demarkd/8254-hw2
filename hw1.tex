@@ -277,7 +277,8 @@
 \begin{document}\maketitle
 %\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
 \prob{1}
-stuff is going on here 
+\prt{1}
+
 \prob{3}
 \begin{prompt*}
 Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to \PP^n_S$ such that when $S=\spec k$ for $k$ a field, the corresponding morphism on $k$-points
@@ -301,7 +302,7 @@ Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to
 Letting $S$ be a scheme, we let $\PP^k_S=\PP^k\times_{\ZZ}S$ and have (from problem 7)\footnote{ooh fun a forward reference!} that there is a natural\footnote{Is this a correct usage of the word natural? I'm not sure\textemdash all I mean by it is that the bijection is induced by the universal property of the product.} bijection $\mor_\cat{Sch}(\PP^m_S,\PP^n_S)\equiv \mor_\cat{Sch}(\PP^m_S,\PP^k)\times \mor_\cat{Sch}(\PP^m_S,S)$. We consider $\Phi$, the map given by $(\phi,\id_S)$ in the case that $S=\spec k$ and restrict to $u_i\times_\ZZ S\cong \spec \ZZ[\fv{0}{i},\hdots,\fv{m}{i}]\otimes_\ZZ k\cong \spec k[\fv{0}{i},\hdots,\fv{m}{i}]\subset \PP^m_S$. 
 Then, $\restr{\Phi}{{u_i\times_\ZZ S}}:u_i\times_\ZZ S\to v_i\times_\ZZ S$ 
 corresponds to the ring morphism $ \restr{\Phi}{{u_{i} {\times}_{\ZZ} S}}^\#:k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]$ by  \begin{equation*}
-\fv{\ell}{i}\mapsto \begin{cases}running texstudio command within a macro
+\fv{\ell}{i}\mapsto \begin{cases}
 \fv{\ell}{i}&\ell\leq m\\0&\text{else}
 \end{cases}\end{equation*}
 So for any $k$-point $\gamma:\spec k\to \PP^m_k$ over $S$ corresponding to $[a_0:\hdots:a_m]$ where $a_j=\gamma_i(\fv{j}{i})$ for some $i$ such that $\im(\gamma)\subset u_i$ as topological spaces when $j\neq i$ and $a_i=1$, we have that the $k$-point of $\PP^n_k$ given by $\Phi\circ \gamma$ corresponds to the composition of ring maps $k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]\to k$ by 
@@ -397,4 +398,45 @@ We have from the universal property of $\PP^1_\Fp\times_\Fp\PP^1_\Fp$ that $\mor
 	We have from Proposition \ref{4prop2}~ that $\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}=\abs*{\mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)}^2$. As $\abs*{\mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)}$ is an integer, this implies $\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}$ is a perfect square. However, from Proposition \ref{p2fp}, we have that $p^2<\abs*{\PP^2_\Fp(\Fp)}=p^2+p+1<(p+1)^2$ for any $p>0$ and hence $\abs*{\PP^2_\Fp(\Fp)}$ is not a perfect square for any prime $p$.
 \end{subproof}
 \end{proof}
+%
+%
+%
+%
+%
+%
+%
+\prob{7}\begin{prop*}
+	$X\times_{\ZZ}Y$ is the product in $\cat{Sch}$. 
+\end{prop*}
+\begin{proof}
+We begin by stating the definition of fibred product:
+\begin{defn}\label{7defn:fp}
+ $X\times_\ZZ Y$ is the object in $\cat{Sch}$ such that for any $P$ and morphisms $\alpha:P\to X,\beta:P\to Y$ commuting with $\tau_X$, $\tau_Y$, there exists a unique map $P\to X\times_\ZZ Y$ such that the diagram of figure \ref{7fpd} commutes.
+	\begin{figure}[h!]
+		$$\begin{tikzcd}
+		P\arrow[dr,dashrightarrow,"\exists!"]\arrow[ddr,bend right =10, "\alpha",swap]\arrow[drr,bend left=10, "\beta"]&&\\
+		&X\times_\ZZ\arrow[d,"p_X"]\arrow[r,"p_Y"] &Y\arrow[d,"\tau_Y"]\\
+		&X\arrow[r,"\tau_X"]&\spec \ZZ
+		\end{tikzcd}$$\caption{Universal property for $X\times_\ZZ Y$\label{7fpd}}
+	\end{figure}\end{defn}
+
+We let $P$ be any scheme and $\alpha\in \mor_\cat{Sch}(P,X)$, $\beta\in \mor_\cat{Sch}(P,Y)$ be arbitrary. We recall that in homework 4, problem 2, we showed that $\spec \ZZ$ is the terminal object in $\cat{Sch}$. Thus, there exists a unique morphism $\tau_P:P\to \ZZ$, so necessarily $\tau_Y\circ \beta=\tau_X\circ \alpha=\tau_P$. Thus, any such pair of morphisms $\alpha,$ $\beta$ commute with the maps $\tau_Y$, $\tau_X$, so that condition may be omitted from our definition. We restate our definition as follows:
+\begin{defn}[Restatement of Definition \ref{7fpd}]
+	 $X\times_\ZZ Y$ is the object in $\cat{Sch}$ such that for any $P$ and morphisms $\alpha:P\to X,\beta:P\to Y$, there exists a unique map $P\to X\times_\ZZ Y$ such that the diagram of figure \ref{7fpd2} commutes.
+	\begin{figure}[h!]
+		$$\begin{tikzcd}
+		P\arrow[dr,dashrightarrow,"\exists!"]\arrow[ddr,bend right =10, "\alpha",swap]\arrow[drr,bend left=10, "\beta"]&&\\
+		&X\times_\ZZ\arrow[d,"p_X"]\arrow[r,"p_Y"] &Y\\
+		&X&
+		\end{tikzcd}$$\caption{Universal property for $X\times_\ZZ Y$\label{7fpd2}}
+\end{figure}
+\end{defn}
+However, this is precisely the universal property defining the categorical product $X\times Y$. As the product is unique by a standard argument, this shows that $X\times_\ZZ Y$ is the unique product of $X$ and $Y$ in $\cat{Sch}$.
+\end{proof}
+%
+%
+%
+%
+%
+\prob{8}
 \end{document}
