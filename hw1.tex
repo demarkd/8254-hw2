@@ -277,6 +277,7 @@
 \begin{document}\maketitle
 %\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
 \prob{1}
+stuff is going on here 
 \prob{3}
 \begin{prompt*}
 Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to \PP^n_S$ such that when $S=\spec k$ for $k$ a field, the corresponding morphism on $k$-points
@@ -300,7 +301,7 @@ Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to
 Letting $S$ be a scheme, we let $\PP^k_S=\PP^k\times_{\ZZ}S$ and have (from problem 7)\footnote{ooh fun a forward reference!} that there is a natural\footnote{Is this a correct usage of the word natural? I'm not sure\textemdash all I mean by it is that the bijection is induced by the universal property of the product.} bijection $\mor_\cat{Sch}(\PP^m_S,\PP^n_S)\equiv \mor_\cat{Sch}(\PP^m_S,\PP^k)\times \mor_\cat{Sch}(\PP^m_S,S)$. We consider $\Phi$, the map given by $(\phi,\id_S)$ in the case that $S=\spec k$ and restrict to $u_i\times_\ZZ S\cong \spec \ZZ[\fv{0}{i},\hdots,\fv{m}{i}]\otimes_\ZZ k\cong \spec k[\fv{0}{i},\hdots,\fv{m}{i}]\subset \PP^m_S$. 
 Then, $\restr{\Phi}{{u_i\times_\ZZ S}}:u_i\times_\ZZ S\to v_i\times_\ZZ S$ 
 corresponds to the ring morphism $ \restr{\Phi}{{u_{i} {\times}_{\ZZ} S}}^\#:k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]$ by  \begin{equation*}
-\fv{\ell}{i}\mapsto \begin{cases}
+\fv{\ell}{i}\mapsto \begin{cases}running texstudio command within a macro
 \fv{\ell}{i}&\ell\leq m\\0&\text{else}
 \end{cases}\end{equation*}
 So for any $k$-point $\gamma:\spec k\to \PP^m_k$ over $S$ corresponding to $[a_0:\hdots:a_m]$ where $a_j=\gamma_i(\fv{j}{i})$ for some $i$ such that $\im(\gamma)\subset u_i$ as topological spaces when $j\neq i$ and $a_i=1$, we have that the $k$-point of $\PP^n_k$ given by $\Phi\circ \gamma$ corresponds to the composition of ring maps $k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]\to k$ by 
