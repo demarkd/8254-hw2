@@ -205,7 +205,7 @@
 \newtheorem*{notn*}{Notation}
 %FINAL
 \newcommand{\course}{8254}
-\newcommand{\due}{24 January 2018} 
+\newcommand{\due}{29 January 2018} 
 \newcounter{hwn}
 \setcounter{hwn}{1}
 \RequirePackage{geometry}
@@ -273,11 +273,26 @@
 \newcommand{\fv}[2]{\frac{x_{#1}}{x_{#2}}}
 \newcommand{\va}{\vec{a}}
 \newcommand{\vai}[1]{\va^{(#1)}}
+\newcommand{\csch}{\cat{Sch}}
+\newcommand{\cset}{\cat{Set}}
 %\tikzcdset{column sep/tiny=.1cm}
 \begin{document}\maketitle
-%\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
-\prob{1}
+
+\prob{1} We let $X$ be a scheme and $h_X:\cat{Sch}\to \cat{Set}$ the associated functor of points which maps the scheme $S$ to the set $h_X(S)=\mor(S,X)$ and maps $f:S\to S'$ to $h_x(f):\hom(S',X)\to \hom(S,X)$ by mapping $g:S'\to X$ to $g\circ f:S\to X$. 
 \prt{1}
+\begin{prop*}
+	A natural transformation $\eta$ from $h_X$ to $ h_{X'}$ is induced by a morphism $\gph:X\to X'$. Furthermore, if $\gph$ is an isomorphism, $\eta$ is a natural isomorphism. 
+\end{prop*}
+\begin{proof}
+Given $\gph$, we let $\eta_S:\hom(S,X)\to \hom(S,X')$ by mapping $(f:S\to X)\mapsto (\phi\circ f:S\to X')$. We now wish to show that the diagram of figure \ref{ntdiag} commutes for any $f:S\to S':$
+\begin{figure}[h!]
+	$$\begin{tikzcd}
+	h_X(S')\arrow[r,equal]&\mor(S',X)\arrow[r,"h_X(f)"]\arrow[d,"\eta_{S'}"]&\mor(S,X)\arrow[d,"\eta_S"]\arrow[r,equal]&h_X(S)\\
+	h_{X'}(S')\arrow[r,equal]&\mor(S',X')\arrow[r,"h_{X'}(f)"]&\mor(S,X')\arrow[r,equal]&h_{X'}(S)
+	\end{tikzcd}$$\caption{Diagram for natural transformation $\eta$\label{ntdiag}}
+\end{figure}
+Indeed, we let $g:S'\to X$ be an element of $\mor(S',X)$. Then, tracing the path of $g$
+\end{proof}
 \prt{2}
 
 \prob{2}
