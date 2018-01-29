@@ -278,7 +278,15 @@
 %\maketitle\emph{To the Grader: I've been sick and overwhelmed this week and this is the best I can do. I'm sorry you have to wade through it.}
 \prob{1}
 \prt{1}
+\prt{2}
 
+\prob{2}
+\begin{prop*}
+	We let $k$ be a field with $k=\cl{k}$. Then, the closed points of $X=\PP^n_k$ may be identified with points of $(k^{n+1}\setminus \{0\})/\sim$ where $[a_0:\hdots a_n]\sim \lambda[a_0:\hdots a_n]$ for any $0\neq \lambda\in k$. 
+\end{prop*}
+\begin{proof}
+	We have that as the $\{u_i\}$ form an open cover for $X$, a point $x_\mfr$ is closed in $X$ if and only if it is closed in $u_i$ for some $i$. We consider those closed points of a given $u_i$. As $u_i=\spec k[\fv{0}{i},\hdots,\fv{n}{i}]\cong \AA_k^n$, by an extension of homework 1 problem 5, those closed points $x_\mfr$ correspond to ideals of the form $\mfr=\idl{\fv{0}{i}-a_0,\hdots,\fv{n}{i}-a_n}$ where $a_i=1$. We identify this with $[a_0:\hdots:a_{i-1}:1:a_{i+1}:\hdots a_n]\in  (k^{n+1}\setminus \{0\})/\sim$. We wish to show our identification is well-defined. We suppose $x_\mfr\in u_{ij}=D(\fv{j}{i})$. Then, $a_j\neq 0$. Letting $\hat{\mfr}=(\gph^\#_{ji})^{-1}(\restr{\mfr}{u_{ij}})$, we have that $\hat\mfr=\idl{\fv{0}{j}/\fv{i}{j}-a_0,\hdots,\fv{n}{j}/\fv{i}{j}-a_{n}}$. As $1/\fv{i}{j}-a_j\in \hat\mfr$, we may take the quotient map $q$ by $\idl{1/\fv{i}{j}-a_j}$ and have by the fourth isomorphism theorem that $\tilde\mfr$ the image of $\hat\mfr$ has that $\hat\mfr=q^{-1}(\tilde\mfr)$. Note that as $\fv{i}{j}=\frac{1}{a_j}$ in $k[\fv{0}{j},\hdots,\fv{n}{j},\fv{i}{j}^{-1}]/\idl{1/\fv{i}{j}-a_j}$. Hence, letting $b_\ell=a_\ell/a_j$, we have that $\tilde\mfr=\idl{\fv{0}{j}-b_0,\hdots,\fv{n}{j}-b_n}$, corresponding to $[b_0:\hdots:b_n]$ in our identification. However, as $[b_0:\hdots:b_n]=\frac{1}{a_j}[a_0:\hdots:a_n]\sim [a_0:\hdots:a_n]$, this shows our correspondence to be well-defined.
+\end{proof}
 \prob{3}
 \begin{prompt*}
 Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to \PP^n_S$ such that when $S=\spec k$ for $k$ a field, the corresponding morphism on $k$-points
@@ -401,11 +409,7 @@ We have from the universal property of $\PP^1_\Fp\times_\Fp\PP^1_\Fp$ that $\mor
 %
 %
 %
-\prob{5}
-%
-%
-%
-\prob{6}
+\prob{5} 
 \begin{prop*}
 	The affine line with two origins $L$ is not affine.
 \end{prop*}
@@ -415,6 +419,20 @@ We have from the universal property of $\PP^1_\Fp\times_\Fp\PP^1_\Fp$ that $\mor
 %
 %
 %
+%
+%
+%
+\prob{6}
+\begin{prop*} For $k$ a field, 
+	$\OO_{\PP_k^n}(\PP_k^n)=k$.
+\end{prop*}
+\begin{proof}
+	We recall that $\PP_k^n$ is glued from the open sets $u_i=\spec k[\fv{0}{i},\hdots,\fv{n}{i}]$ along the intersections $u_{ij}=D(\fv{j}{i})\subset u_i$. Thus, $\OO_{\PP_k^n}(\PP_k^n)=\clim_{S=u_i,u_{ij},\hdots} \OO_{\PP_k^n}(S)$. As each restriction map is an embedding, we may identify each of our rings $\OO_{S}u_{\cdot}$ with a subring of $R=k[x_0,\hdots,x_n,x_0^{-1},\hdots,x_{n}^{-1}]$. We let $Q$ be a cone for $u_i,u_{ij},\hdots$. Then, we must have for any $q\in Q$ that the image of $q$ in $\OO_{L}(u_i)$ must \textit{be} the image of $q$ in any $\OO_L(u_j)$ and hence must have image in $\bigcap_{\ell=0}^n \OO_L(u_\ell)=k$. Thus, for any such cone, we may factor through $k$ and its inclusions into each $\OO_L(u_i)$, so $\OO_L(\PP^n_k)\cong k$.
+\end{proof}
+%
+%
+%
+
 \prob{7}\begin{prop*}
 	$X\times_{\ZZ}Y$ is the product in $\cat{Sch}$. 
 \end{prop*}
