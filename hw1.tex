@@ -275,23 +275,39 @@
 \newcommand{\vai}[1]{\va^{(#1)}}
 \newcommand{\csch}{\cat{Sch}}
 \newcommand{\cset}{\cat{Set}}
+\newcommand{\aff}{\mathrm{aff}}
 %\tikzcdset{column sep/tiny=.1cm}
 \begin{document}\maketitle
 
 \prob{1} We let $X$ be a scheme and $h_X:\cat{Sch}\to \cat{Set}$ the associated functor of points which maps the scheme $S$ to the set $h_X(S)=\mor(S,X)$ and maps $f:S\to S'$ to $h_x(f):\hom(S',X)\to \hom(S,X)$ by mapping $g:S'\to X$ to $g\circ f:S\to X$. 
 \prt{1}
 \begin{prop*}
-	A natural transformation $\eta$ from $h_X$ to $ h_{X'}$ is induced by a morphism $\gph:X\to X'$. Furthermore, if $\gph$ is an isomorphism, $\eta$ is a natural isomorphism. 
+	The set of natural transformations $\eta$ from $h_X$ to $ h_{X'}$ is in bijection with $\mor(X,X') $. Furthermore, the natural isomorphisms $h_X$ to $h_{X'}$ are in bijection with the isomorphisms between $X$ and $X'$.
 \end{prop*}
 \begin{proof}
-Given $\gph$, we let $\eta_S:\hom(S,X)\to \hom(S,X')$ by mapping $(f:S\to X)\mapsto (\phi\circ f:S\to X')$. We now wish to show that the diagram of figure \ref{ntdiag} commutes for any $f:S\to S':$
+We let $\eta$ be a natural transformation from $h_X$ to $h_{X'}$, and $f:S\to X$ an arbitrary element of $h_X(S)$. Then, we have the diagram of figure \ref{ntdiag}:
 \begin{figure}[h!]
 	$$\begin{tikzcd}
-	h_X(S')\arrow[r,equal]&\mor(S',X)\arrow[r,"h_X(f)"]\arrow[d,"\eta_{S'}"]&\mor(S,X)\arrow[d,"\eta_S"]\arrow[r,equal]&h_X(S)\\
-	h_{X'}(S')\arrow[r,equal]&\mor(S',X')\arrow[r,"h_{X'}(f)"]&\mor(S,X')\arrow[r,equal]&h_{X'}(S)
+	h_X(X)\arrow[r,equal]&\mor(X,X)\arrow[r,"h_X(f)"]\arrow[d,"\eta_{X}"]&\mor(S,X)\arrow[d,"\eta_S"]\arrow[r,equal]&h_X(S)\\
+	h_{X'}(X)\arrow[r,equal]&\mor(X,X')\arrow[r,"h_{X'}(f)"]&\mor(S,X')\arrow[r,equal]&h_{X'}(S)
 	\end{tikzcd}$$\caption{Diagram for natural transformation $\eta$\label{ntdiag}}
 \end{figure}
-Indeed, we let $g:S'\to X$ be an element of $\mor(S',X)$. Then, tracing the path of $g$
+We trace the path of $\id_X$ in figure \ref{ntelt}:
+\begin{figure}[h!]
+	$$\begin{tikzcd}
+\id_X\arrow[r,"h_X(f)",mapsto]\arrow[d,"\eta_{X}",mapsto]&\id_X\circ f=f\arrow[d,"\eta_S",mapsto]\\
+\gph\circ \gph:=\eta_X(\id_X) \arrow[r,"h_{X'}(f)",mapsto]&\eta_S(f)=\gph \circ f
+	\end{tikzcd}$$\caption{Diagram for the path of $\id_X$ through firgure \ref{ntdiag}\label{ntelt}}
+\end{figure}
+As we see in figure \ref{ntelt}, our assumption that $\eta$ is indeed natural forces that $\eta_S(f)=\gph \circ f$, where $\gph$ does \textit{not} depend on $f$. As any $\gph:X\to X'$ induces a natural transformation of this type, this completes our proof of the first statement of the proposition. To see the second, we note that $\eta_S$ is invertible if and only if $\gph$ is an isomorphism.
+\end{proof}
+\prt{2}
+\begin{prop*}
+	We let $h_X^\aff$ be the restriction of $h_X$ to the full subcategory of affine schemes in $\csch$. Then, the assertions of part (a) still hold even if $X,X'$ are not affine.
+\end{prop*}
+\begin{proof} (whoops--from this point onward, any reference to $h_S$ is indeed one to $h_S^\aff$).
+	
+We note that in the case that $X$ is affine and $X'$ is arbitrary, no modification to our proof of part (a) is necessary, a fact which we shall use extensively. We let $X$ be an arbitrary scheme, and let $\{u_i\}_{i\in I}$ be an open affine cover. By our observation, this induces a set of natural transformations $\zeta^i$ from the inclusion $j_i:u_i\to X$. Furthermore, the set of natural transformations between $h_{u_i}$ and $h_{X'}$ are in bijection with morphisms $\gph:u_i\to X'$. Furthermore, we note that any natural transformation $\eta:h_X\to h_{X'}$ induces a tuple indexed by $I$ of natural transformations $\eta^i:h_{u_i}\to h_{X'}$ by restricting $\eta$ to only those morphisms $\gph\in h_X(S)$ such that $\im(\gph)\subset u_i$. We claim that $\eta$ is recoverable from the $(\eta^i)$. Indeed, for any $f:S\to X$ where $S$ is affine, we let $S_i$ be the open subscheme of $S$ with $f^{-1}(u_i)$ as underlying topological space. Then, we may restrict $f$ to $S_i$ to yield a morphism $f_i:S_i\to u_i$. Then, by naturality, $\eta_S(f)$ is recoverable from each of the $\eta^i_{S_i}(f_i)$. As the set of natural transformations $h_{u_i}\to h_{X'}$ are in bijection with morphisms $u_i\to X'$ and $\mor(X,X')$ is in bijection with $\{(\gph_i)_{i\in I}\in \times_{\i \in I} \mor(u_i,X')\;:\;\restr{\gph_i}{u_i\cap u_j}=\restr{\gph_j}{u_i\cap u_j}\;\forall\;i,j\in I\}$, we have now completed our proof.\footnote{Yes, I am quite aware there is quite a bit missing here\textemdash I realized only hours before turning this in that I grossly misunderstood the question in such a manner to render it trivial, so this is my attempt to quickly correct that\textemdash I'm at least \textit{pretty} sure there's a proof of part (b) that sort of resembles the skeleton of a proof I have here.}
 \end{proof}
 \prt{2}
 
