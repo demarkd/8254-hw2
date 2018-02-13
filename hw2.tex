@@ -1,0 +1,516 @@
+\documentclass[english,letter,doublesided]{article}
+\usepackage{rotating}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath,calligra,mathrsfs,amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{relsize}
+
+\usetikzlibrary{arrows, matrix}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\newcommand\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\spm}{Spm}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\mor}{\mathrm{Mor}}
+\newcommand{\obj}{\mathrm{Obj}~}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\OO}{\mathcal{O}}	
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\Ff}{\mathscr{F}}
+\newcommand{\Gg}{\mathscr{G}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\fsc}{\mathscr{F}}
+\newcommand{\afr}{\mathfrak{a}}
+\newcommand{\bfr}{\mathfrak{b}}
+\newcommand{\cfr}{\mathfrak{c}}
+\newcommand{\dfr}{\mathfrak{d}}
+\newcommand{\efr}{\mathfrak{e}}
+\newcommand{\ffr}{\mathfrak{f}}
+\newcommand{\gfr}{\mathfrak{g}}
+\newcommand{\hfr}{\mathfrak{h}}
+\newcommand{\ifr}{\mathfrak{i}}
+\newcommand{\jfr}{\mathfrak{j}}
+\newcommand{\kfr}{\mathfrak{k}}
+\newcommand{\lfr}{\mathfrak{l}}
+\newcommand{\mfr}{\mathfrak{m}}
+\newcommand{\nfr}{\mathfrak{n}}
+\newcommand{\ofr}{\mathfrak{o}}
+\newcommand{\pfr}{\mathfrak{p}}
+\newcommand{\qfr}{\mathfrak{q}}
+\newcommand{\rfr}{\mathfrak{r}}
+\newcommand{\sfr}{\mathfrak{s}}
+\newcommand{\tfr}{\mathfrak{t}}
+\newcommand{\ufr}{\mathfrak{u}}
+\newcommand{\vfr}{\mathfrak{v}}
+\newcommand{\wfr}{\mathfrak{w}}
+\newcommand{\xfr}{\mathfrak{x}}
+\newcommand{\yfr}{\mathfrak{y}}
+\newcommand{\zfr}{\mathfrak{z}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ccal}{\mathcal{C}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter	
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFo\newcommand{\PP}{\mathbb{P}}ntShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exle}[thm]{Example}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[thm]
+\newtheorem*{remark*}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem*{notn*}{Notation}
+%FINAL
+\newcommand{\course}{8254}
+\newcommand{\due}{29 January 2018} 
+\newcounter{hwn}
+\setcounter{hwn}{1}
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH \course~ Homework \Roman{hwn}}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH \course}
+\cfoot{\thepage}
+\renewcommand{\bar}{\overline}
+
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\idl}[1]{\langle #1 \rangle}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id} }
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\cat}[1]{{\mathrm{\bf{#1}}}}
+%\usepackage[backend=biber,style=alphabetic]{biblatex}
+%\addbibresource{algeo.bib}
+\newcommand{\colim}{\varinjlim}
+\newcommand{\clim}{\varprojlim}
+\newcommand{\frp}{\mathop{\large {\mathlarger{\star}}}}
+\newcommand{\restr}[2]{{\evat{#1}{#2}{}}}
+\newcommand{\imp}[1]{\underline{#1}}
+\newcommand{\ihm}{\imp{\hom}}
+\newcommand{\him}{\ihm(\FF,\GG)}
+\newcommand{\incla}{\hookrightarrow}
+\newcommand{\pre}{\mathrm{pre}}
+\newcommand{\Fp}{{\FF_P}}
+\renewcommand{\thethm}{\arabic{section}.\Alph{thm}}
+\newcommand{\gph}{\varphi}
+\newcommand{\fv}[2]{\frac{x_{#1}}{x_{#2}}}
+\newcommand{\va}{\vec{a}}
+\newcommand{\vai}[1]{\va^{(#1)}}
+\newcommand{\csch}{\cat{Sch}}
+\newcommand{\cset}{\cat{Set}}
+\newcommand{\aff}{\mathrm{aff}}
+%\tikzcdset{column sep/tiny=.1cm}
+\begin{document}\maketitle
+
+\prob{1} We let $X$ be a scheme and $h_X:\cat{Sch}\to \cat{Set}$ the associated functor of points which maps the scheme $S$ to the set $h_X(S)=\mor(S,X)$ and maps $f:S\to S'$ to $h_x(f):\hom(S',X)\to \hom(S,X)$ by mapping $g:S'\to X$ to $g\circ f:S\to X$. 
+\prt{1}
+\begin{prop*}
+	The set of natural transformations $\eta$ from $h_X$ to $ h_{X'}$ is in bijection with $\mor(X,X') $. Furthermore, the natural isomorphisms $h_X$ to $h_{X'}$ are in bijection with the isomorphisms between $X$ and $X'$.
+\end{prop*}
+\begin{proof}
+We let $\eta$ be a natural transformation from $h_X$ to $h_{X'}$, and $f:S\to X$ an arbitrary element of $h_X(S)$. Then, we have the diagram of figure \ref{ntdiag}:
+\begin{figure}[h!]
+	$$\begin{tikzcd}
+	h_X(X)\arrow[r,equal]&\mor(X,X)\arrow[r,"h_X(f)"]\arrow[d,"\eta_{X}"]&\mor(S,X)\arrow[d,"\eta_S"]\arrow[r,equal]&h_X(S)\\
+	h_{X'}(X)\arrow[r,equal]&\mor(X,X')\arrow[r,"h_{X'}(f)"]&\mor(S,X')\arrow[r,equal]&h_{X'}(S)
+	\end{tikzcd}$$\caption{Diagram for natural transformation $\eta$\label{ntdiag}}
+\end{figure}
+We trace the path of $\id_X$ in figure \ref{ntelt}:
+\begin{figure}[h!]
+	$$\begin{tikzcd}
+\id_X\arrow[r,"h_X(f)",mapsto]\arrow[d,"\eta_{X}",mapsto]&\id_X\circ f=f\arrow[d,"\eta_S",mapsto]\\
+\gph\circ \gph:=\eta_X(\id_X) \arrow[r,"h_{X'}(f)",mapsto]&\eta_S(f)=\gph \circ f
+	\end{tikzcd}$$\caption{Diagram for the path of $\id_X$ through firgure \ref{ntdiag}\label{ntelt}}
+\end{figure}
+As we see in figure \ref{ntelt}, our assumption that $\eta$ is indeed natural forces that $\eta_S(f)=\gph \circ f$, where $\gph$ does \textit{not} depend on $f$. As any $\gph:X\to X'$ induces a natural transformation of this type, this completes our proof of the first statement of the proposition. To see the second, we note that $\eta_S$ is invertible if and only if $\gph$ is an isomorphism.
+\end{proof}
+\prt{2}
+\begin{prop*}
+	We let $h_X^\aff$ be the restriction of $h_X$ to the full subcategory of affine schemes in $\csch$. Then, the assertions of part (a) still hold even if $X,X'$ are not affine.
+\end{prop*}
+\begin{proof} (whoops--from this point onward, any reference to $h_S$ is indeed one to $h_S^\aff$).
+	
+We note that in the case that $X$ is affine and $X'$ is arbitrary, no modification to our proof of part (a) is necessary, a fact which we shall use extensively. We let $X$ be an arbitrary scheme, and let $\{u_i\}_{i\in I}$ be an open affine cover. By our observation, this induces a set of natural transformations $\zeta^i$ from the inclusion $j_i:u_i\to X$. Furthermore, the set of natural transformations between $h_{u_i}$ and $h_{X'}$ are in bijection with morphisms $\gph:u_i\to X'$. Furthermore, we note that any natural transformation $\eta:h_X\to h_{X'}$ induces a tuple indexed by $I$ of natural transformations $\eta^i:h_{u_i}\to h_{X'}$ by restricting $\eta$ to only those morphisms $\gph\in h_X(S)$ such that $\im(\gph)\subset u_i$. We claim that $\eta$ is recoverable from the $(\eta^i)$. Indeed, for any $f:S\to X$ where $S$ is affine, we let $S_i$ be the open subscheme of $S$ with $f^{-1}(u_i)$ as underlying topological space. Then, we may restrict $f$ to $S_i$ to yield a morphism $f_i:S_i\to u_i$. Then, by naturality, $\eta_S(f)$ is recoverable from each of the $\eta^i_{S_i}(f_i)$. As the set of natural transformations $h_{u_i}\to h_{X'}$ are in bijection with morphisms $u_i\to X'$ and $\mor(X,X')$ is in bijection with $\{(\gph_i)_{i\in I}\in \times_{\i \in I} \mor(u_i,X')\;:\;\restr{\gph_i}{u_i\cap u_j}=\restr{\gph_j}{u_i\cap u_j}\;\forall\;i,j\in I\}$, we have now completed our proof.\footnote{Yes, I am quite aware there is quite a bit missing here\textemdash I realized only hours before turning this in that I grossly misunderstood the question in such a manner to render it trivial, so this is my attempt to quickly correct that\textemdash I'm at least \textit{pretty} sure there's a proof of part (b) that sort of resembles the skeleton of a proof I have here.}
+\end{proof}
+\prt{2}
+
+\prob{2}
+\begin{prop*}
+	We let $k$ be a field with $k=\cl{k}$. Then, the closed points of $X=\PP^n_k$ may be identified with points of $(k^{n+1}\setminus \{0\})/\sim$ where $[a_0:\hdots a_n]\sim \lambda[a_0:\hdots a_n]$ for any $0\neq \lambda\in k$. 
+\end{prop*}
+\begin{proof}
+	We have that as the $\{u_i\}$ form an open cover for $X$, a point $x_\mfr$ is closed in $X$ if and only if it is closed in $u_i$ for some $i$. We consider those closed points of a given $u_i$. As $u_i=\spec k[\fv{0}{i},\hdots,\fv{n}{i}]\cong \AA_k^n$, by an extension of homework 1 problem 5, those closed points $x_\mfr$ correspond to ideals of the form $\mfr=\idl{\fv{0}{i}-a_0,\hdots,\fv{n}{i}-a_n}$ where $a_i=1$. We identify this with $[a_0:\hdots:a_{i-1}:1:a_{i+1}:\hdots a_n]\in  (k^{n+1}\setminus \{0\})/\sim$. We wish to show our identification is well-defined. We suppose $x_\mfr\in u_{ij}=D(\fv{j}{i})$. Then, $a_j\neq 0$. Letting $\hat{\mfr}=(\gph^\#_{ji})^{-1}(\restr{\mfr}{u_{ij}})$, we have that $\hat\mfr=\idl{\fv{0}{j}/\fv{i}{j}-a_0,\hdots,\fv{n}{j}/\fv{i}{j}-a_{n}}$. As $1/\fv{i}{j}-a_j\in \hat\mfr$, we may take the quotient map $q$ by $\idl{1/\fv{i}{j}-a_j}$ and have by the fourth isomorphism theorem that $\tilde\mfr$ the image of $\hat\mfr$ has that $\hat\mfr=q^{-1}(\tilde\mfr)$. Note that as $\fv{i}{j}=\frac{1}{a_j}$ in $k[\fv{0}{j},\hdots,\fv{n}{j},\fv{i}{j}^{-1}]/\idl{1/\fv{i}{j}-a_j}$. Hence, letting $b_\ell=a_\ell/a_j$, we have that $\tilde\mfr=\idl{\fv{0}{j}-b_0,\hdots,\fv{n}{j}-b_n}$, corresponding to $[b_0:\hdots:b_n]$ in our identification. However, as $[b_0:\hdots:b_n]=\frac{1}{a_j}[a_0:\hdots:a_n]\sim [a_0:\hdots:a_n]$, this shows our correspondence to be well-defined.
+\end{proof}
+\prob{3}
+\begin{prompt*}
+Let $S$ be a scheme. Construct a universal (w/r/t $S$) morphism $\Phi:\PP^m_S\to \PP^n_S$ such that when $S=\spec k$ for $k$ a field, the corresponding morphism on $k$-points
+\begin{enumerate}[label=\textit{(\roman*)}]
+	\item maps $[x_0:\hdots:x_m]\mapsto [x_0:\hdots:x_m:0:\hdots:0]$ for any $n\geq m$. 
+	\item maps $[x_0:\hdots:x_m]\mapsto [M_{\vec{a}}(x):\vec{a}\in C_m(d)]$ where $C_m(d)$ is the set of (ordered) compositions of $d$ with $m+1$ parts (allowing parts of size zero) for $n={m+d\choose d}$ and $M_{\vec{a}}(x)=x_0^{a_0}\hdots x_m^{a_m}$ for $\vec{a}=(a_0,\hdots,a_m)$.
+\end{enumerate}
+\end{prompt*}\begin{proof}[Response]
+\begin{enumerate}[label=\textit{(\roman*)}]
+	\item We let $\PP^m:=\PP^m_\ZZ$ be constructed by gluing schemes $u_i:= 
+	\spec\ZZ[\fv{0}{i},\hdots,\fv{m}{i}]$ with gluing morphisms $\gph_{ij}$ as is standard and $\PP^^n:=\PP^n_\ZZ$ be constructed in much the same way from $v_i:= \spec\ZZ[\fv{0}{i},\hdots,\fv{n}{i}]$ with gluing morphisms $\psi_{ij}$. We construct the following morphism $\phi: \PP^m\to \PP^n$ by defining $\phi_i:u_i\to \PP^n$ for each $i=0,\hdots,m$ then checking intersections to show the maps $\phi_i$ commute with the gluing maps $\varphi_{ij}$ on $u_{ij}$. We define $\phi_i$ by mapping $u_i$ to $v_i$ via the affine scheme morphism induced by the ring morphsim $\phi_i^\#:\ZZ[\fv{0}{i},\hdots,\fv{n}{i}] \to \ZZ[\fv{0}{i},\hdots,\fv{m}{i}]$ given by \begin{equation*}\fv{\ell}{i}\mapsto\begin{cases}\fv{\ell}{i}&\ell\leq m\\0&\text{else}\end{cases}\end{equation*}
+	We symmetrize the rings $\OO_{u_i}(u_i)$ by letting $R_m:=\ZZ[x_0,\hdots,x_m,x_0^{-1},\hdots,x_m^{-1}]_0$, that is the degree-0 component of the ring of Laurent polynomials in $\ZZ$. Then we may identify $\OO_{u_i}(u_i)=\ZZ[\fv{0}{i},\hdots,\fv{n}{i}]=\ZZ[x_0,\hdots,x_n,x_i^{-1}]_0$ with its isomorphic image as a subring of $R_m$ for all $i$. We do the same for the ring $R_n:=\ZZ[x_0,\hdots,x_n,x_0^{-1},\hdots,x_n^{-1}]_0$ w/r/t $\OO_{v_j}(v_j)=\ZZ[x_0,\hdots,x_n,x_j^{-1}]_0$. Then, $u_{ij}=u_{ji}=\ZZ[x_0,\hdots,x_m,x_i^{-1},x_j^{-1}]_0$ with $\gph_{ij}$ the identity morphism. Now, $\restr{\phi_i}{u_{ij}}:u_{ij}\to v_{ij}$ and $\restr{\phi_j}{u_{ij}}:u_{ij}\to v_{ij}$ are clearly both the maps inherited from $\phi_{ij}^\#:\OO_{v_{ij}}(v_{ij})= \ZZ[x_0,\hdots,x_n,x_i^{-1},x_j^{-1}]_0\to \ZZ[x_0,\hdots,x_m,x_i^{-1},x_j^{-1}]_0=\OO_{u_{ij}}(u_{ij})$ defined by \begin{equation*}
+\fv{\ell}{i}\mapsto \begin{cases}
+\fv{\ell}{i}&\ell\leq m\\0&\text{else}
+\end{cases}\hspace{2cm}\fv{\ell}{j}\mapsto \begin{cases}
+\fv{\ell}{j}&\ell\leq m\\0&\text{else}
+\end{cases}
+	\end{equation*}
+	and indeed it is trivial that $\phi_{ij}=\phi_{ji}\circ \gph_{ij}$ as $\gph_{ij}$ is simply the identity. Thus, we have indeed defined a morphism $\phi:\PP^m\to \PP^n$. 
+	
+Letting $S$ be a scheme, we let $\PP^k_S=\PP^k\times_{\ZZ}S$ and have (from problem 7)\footnote{ooh fun a forward reference!} that there is a natural\footnote{Is this a correct usage of the word natural? I'm not sure\textemdash all I mean by it is that the bijection is induced by the universal property of the product.} bijection $\mor_\cat{Sch}(\PP^m_S,\PP^n_S)\equiv \mor_\cat{Sch}(\PP^m_S,\PP^k)\times \mor_\cat{Sch}(\PP^m_S,S)$. We consider $\Phi$, the map given by $(\phi,\id_S)$ in the case that $S=\spec k$ and restrict to $u_i\times_\ZZ S\cong \spec \ZZ[\fv{0}{i},\hdots,\fv{m}{i}]\otimes_\ZZ k\cong \spec k[\fv{0}{i},\hdots,\fv{m}{i}]\subset \PP^m_S$. 
+Then, $\restr{\Phi}{{u_i\times_\ZZ S}}:u_i\times_\ZZ S\to v_i\times_\ZZ S$ 
+corresponds to the ring morphism $ \restr{\Phi}{{u_{i} {\times}_{\ZZ} S}}^\#:k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]$ by  \begin{equation*}
+\fv{\ell}{i}\mapsto \begin{cases}
+\fv{\ell}{i}&\ell\leq m\\0&\text{else}
+\end{cases}\end{equation*}
+So for any $k$-point $\gamma:\spec k\to \PP^m_k$ over $S$ corresponding to $[a_0:\hdots:a_m]$ where $a_j=\gamma_i(\fv{j}{i})$ for some $i$ such that $\im(\gamma)\subset u_i$ as topological spaces when $j\neq i$ and $a_i=1$, we have that the $k$-point of $\PP^n_k$ given by $\Phi\circ \gamma$ corresponds to the composition of ring maps $k[\fv{0}{i},\hdots,\fv{n}{i}]\to k[\fv{0}{i},\hdots,\fv{m}{i}]\to k$ by 
+\begin{equation*}
+	\fv{\ell}{i}\mapsto \begin{cases}
+	\fv{\ell}{i}&\ell\leq m\\
+	0&else
+	\end{cases}\mapsto  \begin{cases}
+\gamma_i(	\fv{\ell}{i})=a_i&\ell\leq m\\
+	0&else
+	\end{cases}
+\end{equation*}
+and hence the induced map on $k$-points is given by $[a_0:\hdots:a_m]\mapsto [a_0:\hdots:a_m:0:\hdots:0]$
+	\item Much of our construction here is identical to that as precedes and as such, we shall skip over many of the technical details and emphasize the differences in the construction. We again define a map $\phi:\PP^m\to \PP^n$ where $n={m+d\choose d}$ by defining its restrictions to $u_i$ and checking that each $\phi_i$ agrees on the intersection. We define distinguished compositions $\vec{a}^{(i)}=(0,\hdots,0,d,0,\hdots,)$ such that $M_{\vai{i}}(x)$ and let $\phi_i:u_i\to v_{\vec{a}^{(i)}}$ be defined by the ring map $\phi_i^\#:\ZZ[\fv{\vec{b}}{\vai{i}}:\vec{b}\in C_m(d)]\to \ZZ[\fv{0}{i},\hdots,\fv{m}{i}]$ given by $$\fv{\vec{b}}{\vai{i}}\mapsto M_{\vec{b}}\left(\fv{0}{i},\hdots,\fv{i-1}{i},1,\fv{i+1}{i},\hdots,\fv{m}{i}\right)$$
+	Then, identifying $\OO_{u_i}(u_i)$ with its isomorphic image in $R_m$ as in the previous problem, this corresponds to $M_{\vec{b}}(x_0,\hdots,x_m)/x_i^d=M_{\vec{b}}(x)/M_{\vec{a}^{(i)}}(x)$. Now, by the symmetry of our definition, it is clear that our maps $\phi_i$, $\phi_j$ agree on intersections, defining a morphism $\phi: \PP^m\to \PP^n$. 
+	
+	We let $\Phi$ be as before with respect to our new morphism $\phi$ and let $\gamma:\spec k\to \PP^m_k$ be a $k$-point corresponding to $[a_1:\hdots:a_m]$. We let $i$ be such that $a_i$ is nonzero and take the equivalence class with $a_i=1$ so $a_j=\gamma_j(\fv{j}{i})$. Then $\im(\gamma)\subset u_i$ as topological spaces. Then, $\Phi\circ \gamma$ is a $k$-point of $\PP^n_k$, corresponding to the composition of ring maps $k[\fv{\vec{b}}{\vai{i}}:\vec{b}\in C_m(d)]\to k[\fv{0}{i},\hdots,\fv{m}{i}]\to k$ by
+	\begin{equation}
+		\fv{\vec{b}}{\vai{i}}\mapsto M_\vec{b}\left(\fv{0}{i},\hdots,\fv{i-1}{i},1,\fv{i+1}{i},\hdots,\fv{m}{i}\right)\mapsto M_\vec{b}(a_1,\hdots,a_m)
+	\end{equation}
+	Thus in general, the induced map of $k$-points is $[a_1:\hdots:a_m]\mapsto [M_\vec{b}(\vec{a}):\vec{b}\in C_m(d)]$.
+\end{enumerate}
+\end{proof}
+\prob{4}
+\begin{prop*} For a field $K$, 
+$\PP^2_K$ is not necessarily scheme-isomorphic to $\PP_K^1\times_{K}\PP_K^1$.
+\end{prop*}
+\begin{proof}
+	We follow the suggestion of the hint and count $\FF_p$-points of $\PP_{\Fp}^2$ and of $\PP_\Fp^1\times_\Fp\PP_\Fp^1$.
+	
+	\begin{prop}\label{p2fp}
+	$	\abs{\PP_{\Fp}^2\left(\Fp\right)}=p^2+p+1$
+	\end{prop}
+\begin{subproof}[Proof of Proposition \ref{p2fp}] We let $u_i=\spec \FF_p[\frac{x_\ell}{x_i}:\ell=0,1,2]\cong \AA^2_\Fp$ with $u_{ij}=D(\frac{x_j}{x_i})\subset u_i$ and $u_{ijk}=D(\frac{x_k}{x_i})\subset u_{ij}$ and let $\PP^2_\Fp$ be the resulting scheme from gluing the $u_i$ along the $u_{ij}$, as is standard. 
+	We recall that a $\Fp$-point $\alpha$ of $\PP^2_\Fp$ is by definition a (scheme-) morphism $\spec \Fp\to \PP^2_\Fp$ over $\spec \Fp$ as in Figure \ref{4fppt}.
+	\begin{figure}[h!]
+		$$\begin{tikzcd}
+			\spec \Fp \arrow[dr]\arrow[rr,"\alpha"]&&\PP^2_\Fp\arrow[dl]\\&\spec \Fp &
+		\end{tikzcd}$$\caption{A $\FF_p$-point $\alpha$ of $\PP^2_\Fp$.\label{4fppt}}
+	\end{figure}
+
+We note that $\spec \FF_p$ is a single point as a topological space. Hence, as a map of topological spaces $\im \alpha\subset u_i$ for some $u_i$. Thus, for any scheme morphism over $ \FF_p$ $\alpha:\spec \FF_p\to \PP^2_\Fp$, $\alpha$ restricts to a scheme morphism over $ \FF_p$ $\alpha':\spec \FF_p\to u_i\cong \AA^2_\Fp$, resulting in the diagram of Figure \ref{4resui}.
+\begin{figure}[h!]
+	$$\begin{tikzcd}
+	\spec \Fp \arrow[dr]\arrow[rr,"\alpha'"]&&u_i\arrow[dl]\\&\spec \Fp &
+	\end{tikzcd}$$\caption{Restricting $\alpha\in \PP^2_\Fp(\Fp)$ to $\alpha'\in u_i(\Fp)$ \label{4resui}}
+\end{figure} We may then apply the principal of inclusion-exclusion to count $$\abs*{\PP^2_\Fp(\Fp)}=\sum_{i=0}^2 \abs*{u_i(\Fp)}-\sum_{0\leq i<j\leq 2} \abs*{u_{ij}(\Fp)}+\abs*{u_{012}(\Fp)}.$$ By the symmetry of the definitions of $u_i$ and $u_{ij}$, we fix $i<j$ and have that  \begin{equation}\abs*{\PP^2_\Fp(\Fp)}=3\abs*{ u_i(\Fp)}-3\abs*{u_{ij}(\Fp)}+\abs*{u_{012}(\Fp)}.\label{4incex}\end{equation}
+
+Now, as each of the schemes in Figure \ref{4resui} are affine, we may use the canonical bijection between affine scheme morphisms and ring morphisms to biject $u_i(\Fp)$ to morphisms over the ring $\Fp$ as in Figure \ref{4resr}.\begin{figure}[h!]\begin{centering}
+	$$\begin{tikzcd}
+\Fp&&\Fp[x,y]\arrow[ll,"\alpha'"]\\& \Fp \arrow[ur]\arrow[ul]&
+	\end{tikzcd}$$\caption{Restricting $\alpha\in \PP^2_\Fp(\Fp)$ to $\alpha'\in u_i(\Fp)$ \label{4resr}}\end{centering}
+\end{figure}
+
+We note that as a ring morphism is necessarily unital and $\Fp^+$ is cyclic, there is at most one ring morphism $\Fp\to R$ for any ring $R$ and in particular exactly one for $R=\Fp,\Fp[x,y]$. Thus, for \textit{any} ring morphism $\alpha':\Fp[x,y]\to \Fp$, the diagram of Figure \ref{4resr} commutes. Hence, $u_i(\Fp)$ is in bijection with $\mor_\cat{Ring}(\Fp[x,y],\Fp)$. As any morphism $\alpha'\in \mor_\cat{Ring}(\Fp[x,y],\Fp)$ is defined by two elements $\alpha'(x),\alpha'(y)\in \Fp$, we have that $\abs{u_i(\Fp)}=p^2$. 
+
+We may use identical techniques to biject $u_{ij}(\Fp)$ with $\mor_\cat{Ring}(\OO_{u_{ij}}(u_{ij}),\FF_p)$. As $u_{ij}=D(\frac{x_j}{x_i})\subset u_i$, we have that $\OO_{u_{ij}}(u_{ij})\cong \Fp[x,y]_x$. By the universal property of localization, we have that $\mor_\cat{Ring}(\OO_{u_{ij}}(u_{ij}),\FF_p)$ is in bijection with $\{\alpha\in \mor_{\cat{Ring}}(\Fp[x,y],\Fp)\;:\;\alpha(x)\in \Fp^\times\}$, which is in turn in bijection with $\Fp^\times \times \Fp$. Thus, $\abs{u_{ij}(\Fp)}=p(p-1)$.
+
+Finally, identical techniques again may be employed to biject $u_{012}(\Fp)$ with $\mor_\cat{Ring}(\OO_{u_{012}}(u_{012}),\FF_p)$. As $\OO_{u_{012}}(u_{012})\cong \Fp[x,y]_{x,y}$, we may use the same universal property argument to see $\mor_\cat{Ring}(\OO_{u_{012}}(u_{012}),\FF_p)$ is in bijection with $(\Fp^\times)^2$. Thus, $\abs{u_{012}(\Fp)}=p(p-1)$.
+
+We substitute our values for $\abs{u_{\avec{i}}(\Fp)}$ into \eqref{4incex} to yield our final count for $\PP^2_\Fp(\Fp)$: \begin{align*}
+	\abs*{\PP^2_\Fp(\Fp)}&=3\abs*{ u_i(\Fp)}-3\abs*{u_{ij}(\Fp)}+\abs*{u_{012}(\Fp)}\\
+	&=3p^2-3p(p-1)+(p-1)^2=p^2+p+1, \end{align*} as desired.
+\end{subproof}
+\begin{prop}
+	$\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}=\abs*{\mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)}^2$\label{4prop2}
+\end{prop}\begin{subproof}[Proof of Proposition \ref{4prop2}]
+We claim $\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)$ is in bijection with $\PP^1_\Fp(\Fp)^2$. Indeed, we note that $\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)$ is in bijection with commuting diagrams of the form of Figure \ref{4prodpts}.
+\begin{figure}[h!]
+
+	$$\begin{tikzcd}
+\spec \Fp \arrow[dr]\arrow[rr,"\alpha"]&&\PP^1_\Fp\times_\Fp\PP^1_\Fp\arrow[dl]\\&\spec \Fp &
+	\end{tikzcd}$$\caption{A $\Fp$-point $\alpha$ of $\PP^1_\Fp\times_\Fp\PP^1_\Fp$.\label{4prodpts}}
+
+\end{figure}
+As we have noted, there is only one scheme morphism $\spec\Fp\to\Spec\Fp$, so this diagram commutes automatically for any $\alpha$. Hence, $\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)$ is in bijection with $\mor_\cat{Sch}\left(\spec \Fp,\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)$. We consider the diagram of figure \ref{4proun}.
+\begin{figure}[h!]
+	\begin{centering}
+		$$\begin{tikzcd}
+		\spec \Fp\arrow[drr,"\alpha",bend left=15]\arrow[rdd,"\beta",bend right=15,swap]&&\\
+		&\PP^1_\Fp\times_\Fp\PP^1_\Fp\arrow[d]\arrow[r]&\PP^1_\Fp\arrow[d]\\
+		&\PP^1_\Fp\arrow[r]&\spec \Fp
+		\end{tikzcd}$$\caption{A diagram illustrating maps $\spec \Fp\to\PP^1_\Fp\times_\Fp\PP^1_\Fp$ \label{4proun}}
+	\end{centering}
+\end{figure}
+
+We have from the universal property of $\PP^1_\Fp\times_\Fp\PP^1_\Fp$ that $\mor_{\cat{Sch}}(\spec \Fp,\PP^1_\Fp\times_\Fp\PP^1_\Fp)$ is in bijection with pairs $(\alpha,\beta)$ such that the outer square in the diagram of figure \ref{4proun} commutes. However, as there is only one Scheme morphism $\spec \Fp\to \spec \Fp$, this square commutes automatically for any $(\alpha,\beta)\in \mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)$. This proves our proposition.
+\end{subproof}
+\begin{cor}\label{4nop}
+	There are no $p$ such that  $\abs{\PP_{\Fp}^2\left(\Fp\right)}=\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}$.
+\end{cor}
+\begin{subproof}[Proof of Corollary \ref{4nop}]
+	We have from Proposition \ref{4prop2}~ that $\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}=\abs*{\mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)}^2$. As $\abs*{\mor_{\cat{Sch}}(\spec\Fp,\PP^1_\Fp)}$ is an integer, this implies $\abs{\left(\PP^1_\Fp\times_\Fp\PP^1_\Fp\right)(\Fp)}$ is a perfect square. However, from Proposition \ref{p2fp}, we have that $p^2<\abs*{\PP^2_\Fp(\Fp)}=p^2+p+1<(p+1)^2$ for any $p>0$ and hence $\abs*{\PP^2_\Fp(\Fp)}$ is not a perfect square for any prime $p$.
+\end{subproof}
+\end{proof}
+%
+%
+%
+\prob{5} 
+\begin{prop*}
+	The affine line with two origins $L$ is not affine.
+\end{prop*}
+\begin{proof}
+	We recall that $L$ is constructed by gluing $X=\spec k[t]$ and $Y=\spec k[s]$ via the identity map corresponding to the ring map $t\mapsto s$ on $U=D(t)\subset \spec k[t]$, $V= D(s)\subset \spec k[s]$. We seek to calculate $\OO_{L}(L)=\clim_{U\subset L \text{open}}\OO_L(U)$. By an argument virtually identical to that of problem 6 on homework 5, it is sufficient to do so on an open affine cover (containing all intersections) of $L$, that is $\OO_L(L)=\clim_{S=X,Y,X\cap Y}\OO_L(S)=k[s]\times_{k[u,u^{-1}]} k[t]$ where $\iota_s:k[s]\to k[u,u^{-1}]$ is the map $s\mapsto u$ and similarly for $\iota_t:k[t]\to k[u,u^{-1}]$. As these maps are both embeddings, we must have that for any maps $\alpha:R\to k[t]$, $\beta:R\to k[s]$, we must have that $\im(\iota_t\circ \alpha),$ $\im (\iota_s\circ \beta)\subset \im (\iota_s)\cap \im (\iota_t)=k[u]$, and we must have that if $\alpha(r)=f(t)$, then $\beta(r)=f(s)$ for $r\in R$. Thus, for any such pair of maps, we may factor uniquely through $R\to k[u]$ by $r\mapsto f(u)$ for $\alpha:r\mapsto f(t)$, so $\OO_L(L)=k[u]$. However, we note that $D(u)$ consists (as a topological space) of two points, those corresponding to $\langle t \rangle $ and $\langle s \rangle$, in contrast with $D(u)\subset \spec k[u]$ which consists of one point. Hence, $L\neq \spec k[u]$, so $L$ is not affine.
+\end{proof}
+%
+%
+%
+%
+%
+%
+\prob{6}
+\begin{prop*} For $k$ a field, 
+	$\OO_{\PP_k^n}(\PP_k^n)=k$.
+\end{prop*}
+\begin{proof}
+	We recall that $\PP_k^n$ is glued from the open sets $u_i=\spec k[\fv{0}{i},\hdots,\fv{n}{i}]$ along the intersections $u_{ij}=D(\fv{j}{i})\subset u_i$. Thus, $\OO_{\PP_k^n}(\PP_k^n)=\clim_{S=u_i,u_{ij},\hdots} \OO_{\PP_k^n}(S)$. As each restriction map is an embedding, we may identify each of our rings $\OO_{S}u_{\cdot}$ with a subring of $R=k[x_0,\hdots,x_n,x_0^{-1},\hdots,x_{n}^{-1}]$. We let $Q$ be a cone for $u_i,u_{ij},\hdots$. Then, we must have for any $q\in Q$ that the image of $q$ in $\OO_{L}(u_i)$ must \textit{be} the image of $q$ in any $\OO_L(u_j)$ and hence must have image in $\bigcap_{\ell=0}^n \OO_L(u_\ell)=k$. Thus, for any such cone, we may factor through $k$ and its inclusions into each $\OO_L(u_i)$, so $\OO_L(\PP^n_k)\cong k$.
+\end{proof}
+%
+%
+%
+
+\prob{7}\begin{prop*}
+	$X\times_{\ZZ}Y$ is the product in $\cat{Sch}$. 
+\end{prop*}
+\begin{proof}
+We begin by stating the definition of fibred product:
+\begin{defn}\label{7defn:fp}
+ $X\times_\ZZ Y$ is the object in $\cat{Sch}$ such that for any $P$ and morphisms $\alpha:P\to X,\beta:P\to Y$ commuting with $\tau_X$, $\tau_Y$, there exists a unique map $P\to X\times_\ZZ Y$ such that the diagram of figure \ref{7fpd} commutes.
+	\begin{figure}[h!]
+		$$\begin{tikzcd}
+		P\arrow[dr,dashrightarrow,"\exists!"]\arrow[ddr,bend right =10, "\alpha",swap]\arrow[drr,bend left=10, "\beta"]&&\\
+		&X\times_\ZZ\arrow[d,"p_X"]\arrow[r,"p_Y"] &Y\arrow[d,"\tau_Y"]\\
+		&X\arrow[r,"\tau_X"]&\spec \ZZ
+		\end{tikzcd}$$\caption{Universal property for $X\times_\ZZ Y$\label{7fpd}}
+	\end{figure}\end{defn}
+
+We let $P$ be any scheme and $\alpha\in \mor_\cat{Sch}(P,X)$, $\beta\in \mor_\cat{Sch}(P,Y)$ be arbitrary. We recall that in homework 4, problem 2, we showed that $\spec \ZZ$ is the terminal object in $\cat{Sch}$. Thus, there exists a unique morphism $\tau_P:P\to \ZZ$, so necessarily $\tau_Y\circ \beta=\tau_X\circ \alpha=\tau_P$. Thus, any such pair of morphisms $\alpha,$ $\beta$ commute with the maps $\tau_Y$, $\tau_X$, so that condition may be omitted from our definition. We restate our definition as follows:
+\begin{defn}[Restatement of Definition \ref{7fpd}]
+	 $X\times_\ZZ Y$ is the object in $\cat{Sch}$ such that for any $P$ and morphisms $\alpha:P\to X,\beta:P\to Y$, there exists a unique map $P\to X\times_\ZZ Y$ such that the diagram of figure \ref{7fpd2} commutes.
+	\begin{figure}[h!]
+		$$\begin{tikzcd}
+		P\arrow[dr,dashrightarrow,"\exists!"]\arrow[ddr,bend right =10, "\alpha",swap]\arrow[drr,bend left=10, "\beta"]&&\\
+		&X\times_\ZZ\arrow[d,"p_X"]\arrow[r,"p_Y"] &Y\\
+		&X&
+		\end{tikzcd}$$\caption{Universal property for $X\times_\ZZ Y$\label{7fpd2}}
+\end{figure}
+\end{defn}
+However, this is precisely the universal property defining the categorical product $X\times Y$. As the product is unique by a standard argument, this shows that $X\times_\ZZ Y$ is the unique product of $X$ and $Y$ in $\cat{Sch}$.
+\end{proof}
+%
+%
+%
+%
+%
+\prob{8}
+\begin{prompt*}
+	Describe $\spec k(s)\times_k \spec k(t)$ as a scheme.
+\end{prompt*}\begin{proof}[Response]
+We note that as $\spec k(s)$, $\spec k$ and $\spec k(t)$ are all affine, $\spec k(s)\times_k \spec k(t)\cong \spec (k(s)\otimes_k k(t))$. In order to describe this structure, we use the following lemma.
+\begin{lemma} We let $U$ be the multiplicative semigroup generated by $k[s]\cup k[t]\setminus \{0\}\subset k[s,t]$ with multiplication inherited from that ring. Then,
+$k(s)\otimes_k k(t)\cong A= k[s,t]\left[U^{-1}\right]$\label{8tens}
+\end{lemma}
+\begin{subproof}[Proof of Lemma \ref{8tens}]
+We first claim that $k[s]\otimes_k k[t]\cong k[s,t]$ by the map defined on homogenous generators  $s^m\otimes t^n\mapsto s^mt^n$. Indeed, we see immediately that the map is surjective, as for any $f=\sum_{(m,n)\in \NN^2}a_{mn}s^mt^n\in k[s,t]$, we have that $\sum_{(m,n)}a_{mn}s^m\otimes t^n\mapsto  f$. To see injectivity, we let $\sum_{m,n}a_{mn}s^m\otimes t^n\mapsto 0$ and then have that $\sum_{m,n} a_{mn}s^mt^n=0$, implying $a_{mn}=0$ for all $(m,n)$ by freeness of $k[s,t]$. Thus, our map is indeed an isomorphism. 
+
+We note that along this isomorphism, $U\subset k[s,t]$ is identified with elements of the type $f\otimes g$. These are invertible in $k[s]\otimes k[t]$ and thus there is a unique map $A\to k(s)\otimes k(t)$ such that the map extending our isomorphism $k[s,t]\to k(s)\otimes k(t)$ factors through $A$. Then, we may construct an explicit inverse $k(s)\otimes k(t)$ defined on generators by $$\frac{f(s)}{g(s)}\otimes \frac{h(t)}{k(t)}\mapsto \frac{f(s)h(t)}{g(s)k(t)}.$$ As our inverse is injective, we have established the desired isomorphism.
+\end{subproof}
+From this, we can describe the topological space of $\spec k(s)\times_k \spec k(t)$ explicitly. We have that as $k[s,t]$ is Notherian, $A$ is as well. Thus, any ideal of $A$ can be generated by elements of $k[s,t]\subset A$, as there must exist a common denominator for any set of generating elements. Hence, we may identify $\spec k(s)\times_k \spec k(t)\cong\spec A$ with a subset of $\AA_k^2$, in particular $\bigcap_{f\in U}D(f)$.
+\end{proof}
+
+\end{document}
